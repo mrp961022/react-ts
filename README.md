@@ -114,7 +114,7 @@ export const ReactDom = (prop:Prop) => {
 * 1. 使用`useState` 需要双向绑定数据
 ```
 const [data,setData] = useState("");
-<input input={data} onInput={(e:any)=>{
+<input vakye={data} onInput={(e:any)=>{
     setData(e.target.value)
 }} />
 <button onClick={()=>{
