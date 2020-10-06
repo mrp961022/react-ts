@@ -1,0 +1,71 @@
+ul{
+    margin: 0;
+    padding: 0;
+}
+select {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px;
+}
+.centerUl{
+    width: 745px;
+    height: 600px;
+    float: left;
+    display: flex;
+    border: 1px solid red;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightDiv{
+    width: 500px;
+    height: 600px;
+    float: left;
+    border: 1px solid red;
+    border-left: none;
+    overflow: auto;
+}
+
+.chart{
+    height: 200px;
+    border-bottom: 1px solid red;
+}
+.chart:last-child{
+    border-bottom: none;
+}
+
+.out_ul{
+    list-style: none;
+    width: 607px;
+    height: 500px;
+    overflow-y: scroll;
+    border-top: 1px solid;
+}
+.all_city{
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+}
+.all_city:first-child{
+    border-left: 1px solid;
+}
+.out_ul>li:first-child{
+    font-size: 14px;
+    font-weight: bold;
+    background-color: beige;
+    position: sticky;
+    top: 0px;
+}
+#chartMap {
+    width: 1246px;
+    height: 600px;
+    border: 1px solid red;
+    border-bottom: none;
+    margin-top: 10px;
+}

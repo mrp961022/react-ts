@@ -42,3 +42,90 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## ts + react + and 创建过程
+> 1. npx create-react-app demo --typescript
+> 2. 安装antd依赖 `yarn add antd --save`
+> 3. 安装router以及router的ts支持 `yarn add react-router-dom @types/react-router-dom --save`
+> 4. 安装对antd公共样式的修改支持以及ts支持 `yarn add craco-less @craco/craco --save`
+> 5. 根目录新增文件 `craco.config.js` 内容如下
+```
+const CracoLessPlugin = require('craco-less');
+
+module.exports = {
+  plugins: [
+    {
+      plugin: CracoLessPlugin,
+      options: {
+        lessLoaderOptions: {
+          lessOptions: {
+            // 这里根据需要修改antd的变量颜色
+            modifyVars: { '@primary-color': '#1890ff' },
+            javascriptEnabled: true,
+          },
+        },
+      },
+    },
+  ],
+};
+```
+> 6. 或者直接在less文件中修改颜色
+```
+@import '~antd/dist/antd.less';
+@primary-color: green;
+```
+
+### hook + ts 创建jsx组件（有传参的组件）
+```
+import React from 'react';
+interface Prop {
+    // prop的入参格式 例如
+    name: string,
+    age: number,
+}
+export const ReactDom = (prop:Prop) => {
+    // 各种操作
+    return (
+        jsx组件
+    )
+}
+```
+### router的Switch标签的直接自标签不能是route意外的其他的jsx
+```
+// 假设Header标签是antd Layout中的Header 这样写是错误的
+<Switch>
+    <Header>这是头部</Header>
+</Switch>
+// 正确写法 可以使用空的元素标签包裹
+<Switch>
+    <>
+    <Header>这是头部</Header>
+    </>
+</Switch>
+```
+### useEffect 第二个参数的三种情况 
+* 1. 如果不写相当于componentDidMount和所有状态的componentDidUpdate
+* 2. 如果是一个空数组相当于componentDidMount
+* 3. 如果数组中有指定状态 相当于对数组中状态的watch
+* 4. 注意如果需要调用组件中的方法 需要忽略eslint监控 具体代码```eslint-disable-next-line```
+
+### hook + typescript 监听input的两种方式
+* 1. 使用`useState` 需要双向绑定数据
+```
+const [data,setData] = useState("");
+<input input={data} onInput={(e:any)=>{
+    setData(e.target.value)
+}} />
+<button onClick={()=>{
+    console.log(data);
+}}>查看</button>
+```
+* 2. 使用`useRef` 
+```
+const inputName = useRef<any>();
+<input ref={inputName}/>
+<button onClick={()=>{
+    console.log(inputName.current.state.value)
+}}>查看</button>
+```
