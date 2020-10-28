@@ -1,6 +1,6 @@
 // 普通接口入参
 interface Config {
-    type?: string;
+    type?: 'get' | 'post';
     url: string;
     data?: DataObj | FormData;
     dataType?: string;

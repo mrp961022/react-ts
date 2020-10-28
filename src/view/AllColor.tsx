@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Button} from 'antd'
 import { 
     Switch,
@@ -6,10 +6,14 @@ import {
 } from 'react-router-dom'
 import { RouteInterface } from '../assets/js/router'
 import { RouteCommon } from '../component/RouteCommon'
+// import httpUrl from '../assets/js/https'
 
 export const AllColor = (props:any) => {
     let {routes} = props
     let history = useHistory();
+    useEffect(()=>{
+        // httpUrl.jiekou({name:1,age:2,sex:3})
+    },[])
     const clickBtn = () => {
         let {pathname} = props.location;
         switch (pathname) {
@@ -47,8 +51,12 @@ export const AllColor = (props:any) => {
                 })}
             </Switch>
             {/* 根据宽高设置不用样式 */}
-            {/* <div className="abc"></div>
-            <div className="def"></div> */}
+            <div className="abc">
+                黄色背景
+            </div>
+            <div className="def">
+                蓝色背景
+            </div>
         </div>
     )
 }

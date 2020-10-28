@@ -5,6 +5,20 @@ html,p,ul,li,h1,h2,h3,h4,p,span{
     margin: 0;
     padding: 0;
 }
+:root {
+    --ylcolor: yellow;
+    --blcolor: blue; // css变量声明
+}
+.size(@width, @height) when (@width <= 100px),(@height <= 100px){
+    width: @width;
+    height: @height;
+    background: yellow;
+}
+.size(@width, @height) when (@width > 100px) and (@height > 100px){
+    width: @width;
+    height: @height;
+    background: blue;
+}
 #root {
     height: 100%;
     color: @light;
@@ -160,6 +174,7 @@ html,p,ul,li,h1,h2,h3,h4,p,span{
     }
     .info {
         background: @info-color;
+        // background: var(--ylcolor); css变量使用
     }
     .dark {
         background: @dark;
@@ -173,6 +188,7 @@ html,p,ul,li,h1,h2,h3,h4,p,span{
     }
     .abc {
         .size(100px, 100px);
+        color: @dark
     }
     .def {
         .size(120px, 120px);

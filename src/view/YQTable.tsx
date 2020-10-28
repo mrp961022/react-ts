@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import zhCN from 'antd/es/locale/zh_CN'; 
 import { ConfigProvider,Table,Button,Select,Input,Row,Col } from 'antd'
-import { ajax } from '../assets/js/ajaxUrl'
+import https from '../assets/js/https'
 import { YQCharts } from '../component/YQCharts'
 const { Option } = Select;
 interface yqDataType {
@@ -16,7 +16,8 @@ export const YQTable = () => {
       pageSize: 10,
       currentPage:1
     })
-    const [inputName,setInputName] = useState("")
+    const [load, setLoad] = useState<boolean>(false)
+    const [inputName,setInputName] = useState<string>("")
     const inputAge = useRef<any>();
     const [tbData,setTbData]=useState<Array<any>>([]);
     const local = zhCN;
@@ -38,7 +39,11 @@ export const YQTable = () => {
     const nowNum = (allNum:any):number => 
         allNum.total.confirm-allNum.total.heal-allNum.total.dead;
     const searchNewsData = () => {
-        ajax({url:"http://localhost:8080/api/newsdata"}).then(res=>{
+        // const searchNewsData = async () => {
+        // const httpData = await https.yqCharts()
+        // console.log(httpData)
+        setLoad(true);
+        https.yqCharts().then(res=>{
             let allData = JSON.parse(res).data.areaTree[2].children;
             let tableData:Array<any> = []
             let yqX:Array<string> = []
@@ -77,6 +82,7 @@ export const YQTable = () => {
             })
             setTbData(tableData);
             setDataSource(tableData.slice(0,page.pageSize));
+            setLoad(false);
         }).catch(rej=>{
             console.log(rej)
         })
@@ -227,6 +233,7 @@ export const YQTable = () => {
             <Table 
                 dataSource={dataSource} 
                 columns={columns} 
+                loading={load}
                 size="small" 
                 scroll={{ y: 160 }} 
                 pagination={paginationProps}

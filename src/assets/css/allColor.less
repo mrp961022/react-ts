@@ -1,13 +1,3 @@
 @dark: #001629;
 @light: #fff;
 @button-color: @primary-color;
-.size(@width, @height) when (@width <= 100px),(@height <= 100px){
-    width: @width;
-    height: @height;
-    background: yellow;
-}
-.size(@width, @height) when (@width > 100px) and (@height > 100px){
-    width: @width;
-    height: @height;
-    background: blue;
-}

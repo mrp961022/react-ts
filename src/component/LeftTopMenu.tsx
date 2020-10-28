@@ -96,7 +96,7 @@ export const TopMenu = () => {
     '版本日志', '操作日志', '修改密码', '退出'
   ]
   useEffect(()=>{
-    console.log(state.backColor)
+    // console.log(state.backColor)
   }, [state.backColor])
   const dropMenu = (
     <Menu>
