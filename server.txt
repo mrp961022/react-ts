@@ -1,0 +1,24 @@
+// 新建文件夹server，新建index.js文件
+// 安装axios和express依赖
+// index.js内容是下方代码，app.get是需要映射到本地的路由
+// axios.get中是要访问的数据urlurl可以在网上找，这里是163的疫情信息
+// app.listen监听服务运行成功
+// 如果想要映射多个url可以写多个app.get，然后app.listen中打印每一个
+// 执行 node index.js
+
+const express = require("express");
+const axios = require("axios")
+const app = express();
+app.get('/api/newsdata', async (req,res)=>{
+    // 解决ajax跨域
+    res.append('Access-Control-Allow-Origin', "*");
+    res.append('Access-Control-Allow-content-type', "*")
+    // 请求头条数据
+    let result = await axios.get("https://c.m.163.com/ug/api/wuhan/app/data/list-total?t=321100591747")
+    let data = result.data;
+    res.send(data);
+    res.json({ name: "老马" })
+})
+app.listen(8080, ()=>{
+    console.log("http://localhost:8080/api/newsdata");
+})
