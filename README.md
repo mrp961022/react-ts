@@ -43,6 +43,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+## 克隆项目后安装建议用yarn安装依赖
 
 ## ts + react + and 创建过程
 > 1. npx create-react-app demo --typescript
