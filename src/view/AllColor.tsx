@@ -14,22 +14,27 @@ export const AllColor = (props:any) => {
     useEffect(()=>{
         // httpUrl.jiekou({name:1,age:2,sex:3})
     },[])
+    // enum 枚举，常用来保存状态
+    enum AllPath {
+        other = "/allcolor/other",
+        main = "/allcolor/main"
+    }
     const clickBtn = () => {
         let {pathname} = props.location;
         switch (pathname) {
-            case '/allcolor/other':
+            case AllPath.other:
                 history.push({
-                    pathname:'/allcolor/main'
+                    pathname: AllPath.main
                 })
                 break;
-            case '/allcolor/main':
+            case AllPath.main:
                 history.push({
-                    pathname:'/allcolor/other'
+                    pathname: AllPath.other
                 })
                 break;
             default:
                 history.push({
-                    pathname:'/allcolor/main'
+                    pathname: AllPath.main
                 })
                 break;
         }
