@@ -22,9 +22,9 @@ export const YQCharts = (prop:Prop) => {
     useEffect(()=>{
         // 监听浏览器窗口宽高变化，重新绘制图表
         // window.addEventListener('resize',throttle(drawAllChart,1000))
-        window.onresize = throttle(drawAllChart.bind(YQCharts),1000)
+        window.onresize = throttle(drawAllChart,1000)
         // eslint-disable-next-line
-    },[prop.title])
+    },[prop])
     const throttle = (fn:Function,wait:number)=>{
         var timer:any = null;
         return () => {
