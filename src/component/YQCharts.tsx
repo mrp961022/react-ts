@@ -19,6 +19,24 @@ export const YQCharts = (prop:Prop) => {
         }, 300);
         // eslint-disable-next-line
     },[prop,state.isMini])
+    useEffect(()=>{
+        // 监听浏览器窗口宽高变化，重新绘制图表
+        // window.addEventListener('resize',throttle(drawAllChart,1000))
+        window.onresize = throttle(drawAllChart.bind(YQCharts),1000)
+        // eslint-disable-next-line
+    },[prop.title])
+    const throttle = (fn:Function,wait:number)=>{
+        var timer:any = null;
+        return () => {
+            // console.warn(prop)
+            if(!timer){
+                timer = setTimeout(() =>{
+                    fn();
+                    timer = null;
+                },wait)
+            }
+        }
+    }
     const drawAllChart = () => {
         drawChart({
             ...prop,
