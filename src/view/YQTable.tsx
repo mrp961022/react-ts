@@ -69,12 +69,10 @@ export const YQTable = () => {
                 ...page,
                 total: tableData.length,
             })
-
-            tableData.map(item => {
-                yqX.push(item.cityName);
-                yqY.push(item.todayConfirm);
-                return null;
-            })
+            for (let tbItem of tableData) {
+                yqX.push(tbItem.cityName);
+                yqY.push(tbItem.todayConfirm);
+            }
             setAllYQChart({
                 ...allYQChart,
                 xData: yqX,
