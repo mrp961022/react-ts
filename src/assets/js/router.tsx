@@ -2,7 +2,7 @@ import React from 'react'
 import { Login } from '../../view/Login'
 import { ContentData } from '../../view/ContentData'
 import { AllColor } from '../../view/AllColor'
-import { YQTable } from  '../../view/YQTable'
+import { YQTable } from '../../view/YQTable'
 import { Main } from '../../component/Main'
 import { Other } from '../../component/Other'
 
@@ -10,25 +10,25 @@ export interface RouteInterface {
     path: string,
     component: any,
     routes?: Array<any>,
-    exact?:boolean
+    exact?: boolean
 }
 export let allRoutre = [
     {
-        path:"/",
+        path: "/",
         component: Login,
         exact: true,
     },
     {
-        path:"/home",
+        path: "/home",
         component: ContentData,
     },
     {
-        path:"/allcolor",
+        path: "/allcolor",
         component: AllColor,
         routes: [
             {
-                path:"/allcolor/",
-                component:()=>(
+                path: "/allcolor/",
+                component: () => (
                     <div>点击修改路由</div>
                 ),
                 exact: true,
@@ -46,7 +46,7 @@ export let allRoutre = [
         ]
     },
     {
-        path:"/yqtable",
+        path: "/yqtable",
         component: YQTable,
     }
 ]

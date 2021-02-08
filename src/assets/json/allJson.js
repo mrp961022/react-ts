@@ -8,19 +8,19 @@ import {
 } from '@ant-design/icons';
 export let menuList = [
     {
-        "Icon": <PieChartOutlined/>,
+        "Icon": <PieChartOutlined />,
         "value": "首页",
         "optionKey": "Option 1",
         "path": "/home"
     },
     {
-        "Icon": <DesktopOutlined/>,
+        "Icon": <DesktopOutlined />,
         "value": "antd的颜色有哪些",
         "optionKey": "Option 2",
         "path": "/allcolor"
     },
     {
-        "Icon": <ContainerOutlined/>,
+        "Icon": <ContainerOutlined />,
         "value": "疫情地图展示",
         "optionKey": "Option 3",
         "path": "/yqtable"

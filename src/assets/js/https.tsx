@@ -11,15 +11,15 @@ interface DataObj {
     [index: string]: number | string | Array<string | number>
 }
 export default {
-    yqCharts(data?:DataObj) {
+    yqCharts(data?: DataObj) {
         return ajax({
             url: "http://localhost:8080/api/newsdata",
             data: data
         })
     },
-    jiekou(data?:DataObj){
+    jiekou(data?: DataObj) {
         return ajax({
-            type:'post',
+            type: 'post',
             contentType: "application/json",
             url: "http://localhost:8080/api/something",
             data: data

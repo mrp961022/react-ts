@@ -5,16 +5,16 @@ import StateObj from './state'
 export let AppContext = createContext();
 
 const reducer = (state, action) => {
-    return ActionFun[action.type](state,action)
+    return ActionFun[action.type](state, action)
 }
 
 const data = StateObj;
 
 export default (props) => {
-    const [ state, dispatch ] = useReducer(reducer, data)
+    const [state, dispatch] = useReducer(reducer, data)
     return (
         <AppContext.Provider value={{ state, dispatch }}>
-            { props.children }
+            { props.children}
         </AppContext.Provider>
     )
 }

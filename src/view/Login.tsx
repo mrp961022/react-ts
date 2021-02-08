@@ -14,27 +14,27 @@ export const Login = () => {
     }
     const layout = {
         // labelCol: {span:6},
-        wrapperCol: {span:24}
+        wrapperCol: { span: 24 }
     }
     const tailLayout = {
         wrapperCol: { span: 24 },
     };
-    const onFinish = (values:LoginFace) => {
-        const {userId, passWord} = values
+    const onFinish = (values: LoginFace) => {
+        const { userId, passWord } = values
         let userPass = `${userId} ${passWord}`
-        if(allUser.indexOf(userPass)>-1){
+        if (allUser.indexOf(userPass) > -1) {
             sessionStorage.keyPath = JSON.stringify(["Option 1"])
             history.push({
-                pathname:"/home"
+                pathname: "/home"
             })
-        }else {
+        } else {
             message.warning("用户名或密码错误")
         }
     }
     const onReset = () => {
         form.resetFields();
     }
-    const loginSet = (label:string) => {
+    const loginSet = (label: string) => {
         return {
             // label: label,
             help: `${label}不能为空`,
@@ -44,12 +44,12 @@ export const Login = () => {
         <div className="login">
             <div className="innerLogin">
                 <div className="loginImg">
-                    <img src={LoginImg} alt=""/>
+                    <img src={LoginImg} alt="" />
                     <span>
                         这是一个商标
                     </span>
                 </div>
-                
+
                 <Row justify="space-around">
                     <Col span={10}>
                         <div className="leftLogin">
@@ -60,10 +60,10 @@ export const Login = () => {
                         <p>用户登录</p>
                         <Form {...layout} form={form} className="loginForm" onFinish={onFinish}>
                             <Item name="userId" hasFeedback {...loginSet("用户名")} className="loginItem" rules={[{ required: true }]}>
-                                <Input placeholder="请输入用户名"/>
+                                <Input placeholder="请输入用户名" />
                             </Item>
                             <Item name="passWord" hasFeedback {...loginSet("密码")} className="loginItem" rules={[{ required: true }]}>
-                                <Input type="password" placeholder="请输入密码"/>
+                                <Input type="password" placeholder="请输入密码" />
                             </Item>
                             <Item {...tailLayout} className="loginSubmit">
                                 <Button type="primary" htmlType="submit" className="loginSubmitBtn">登录</Button>
@@ -74,9 +74,9 @@ export const Login = () => {
                         </Form>
                     </Col>
                 </Row>
-                
+
             </div>
         </div>
-        
+
     )
 }

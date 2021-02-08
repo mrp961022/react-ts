@@ -1,20 +1,20 @@
 export default {
-    setKeyPath(state, action ){
+    setKeyPath(state, action) {
         return {
             ...state,
-            keyPath:action.keyPath
+            keyPath: action.keyPath
         }
     },
     setIsMini(state, action) {
         return {
             ...state,
-            isMini:action.isMini
+            isMini: action.isMini
         }
     },
     setBackColor(state, action) {
         return {
             ...state,
-            backColor:action.backColor
+            backColor: action.backColor
         }
     }
 }
