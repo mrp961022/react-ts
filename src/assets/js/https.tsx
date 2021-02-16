@@ -1,4 +1,6 @@
 import { ajax } from './ajaxUrl'
+import allYqData from '../json/yqDatas.json'
+// console.warn(allYqData)
 // 接口统一管理
 interface Config {
     type?: string;
@@ -15,6 +17,11 @@ export default {
         return ajax({
             url: "http://localhost:8080/api/newsdata",
             data: data
+        })
+    },
+    jtYqCharts() {
+        return new Promise((resolve: (value: any) => void)=>{
+            resolve(JSON.stringify(allYqData))
         })
     },
     jiekou(data?: DataObj) {

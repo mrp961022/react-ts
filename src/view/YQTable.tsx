@@ -43,7 +43,8 @@ export const YQTable = () => {
         // const httpData = await https.yqCharts()
         // console.log(httpData)
         setLoad(true);
-        https.yqCharts().then(res => {
+        https.jtYqCharts().then(res => {
+        // https.yqCharts().then(res => {
             let allData = JSON.parse(res).data.areaTree[2].children;
             let tableData: Array<any> = []
             let yqX: Array<string> = []
