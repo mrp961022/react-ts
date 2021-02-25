@@ -3,32 +3,32 @@ import { useHistory } from 'react-router-dom'
 import { Row, Col } from 'antd'
 import { AppContext } from '../store'
 import { drawChart, drawMap } from '../assets/js/allCharts'
-interface Prop {
+interface Props {
     title: string,
     xData: Array<string>,
     yData: Array<number>,
 }
-export const YQCharts = (prop: Prop) => {
+export const YQCharts = (props: Props) => {
     const { state } = useContext(AppContext);
     const history = useHistory();
     useEffect(() => {
-        if (prop.xData.length === 0) return;
+        if (props.xData.length === 0) return;
         setTimeout(() => {
             if (history.location.pathname !== "/yqtable") return;
             drawAllChart();
         }, 300);
         // eslint-disable-next-line
-    }, [prop, state.isMini])
+    }, [props, state.isMini])
     useEffect(() => {
         // 监听浏览器窗口宽高变化，重新绘制图表
         // window.addEventListener('resize',throttle(drawAllChart,1000))
         window.onresize = throttle(drawAllChart, 300)
         // eslint-disable-next-line
-    }, [prop])
+    }, [props])
     const throttle = (fn: Function, wait: number) => {
         var timer: any = null;
         return () => {
-            // console.warn(prop)
+            // console.warn(props)
             if (!timer) {
                 timer = setTimeout(() => {
                     fn();
@@ -39,11 +39,11 @@ export const YQCharts = (prop: Prop) => {
     }
     const drawAllChart = () => {
         drawChart({
-            ...prop,
+            ...props,
             dom: document.getElementById("leftChart") as HTMLDivElement
         })
         drawMap({
-            ...prop,
+            ...props,
             dom: document.getElementById("rightChart") as HTMLDivElement
         })
     }
