@@ -21,26 +21,16 @@ export const AllColor = (props: any) => {
     }
     const clickBtn = () => {
         let { pathname } = props.location;
-        let abcDom = document.getElementsByClassName('abc')[0] as HTMLDivElement
-        let defDom = document.getElementsByClassName('def')[0] as HTMLDivElement
         switch (pathname) {
             case AllPath.other:
                 history.push({
                     pathname: AllPath.main
                 })
-                abcDom.style.width = "100px";
-                abcDom.style.height = "100px";
-                defDom.style.width = "120px";
-                defDom.style.height = "120px";
                 break;
             case AllPath.main:
                 history.push({
                     pathname: AllPath.other
                 })
-                abcDom.style.width = "120px";
-                abcDom.style.height = "120px";
-                defDom.style.width = "100px";
-                defDom.style.height = "100px";
                 break;
             default:
                 history.push({
