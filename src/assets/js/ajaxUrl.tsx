@@ -36,11 +36,12 @@ export function ajax(config: Config) {
             xhr.open(type, config.url, true);
         }
         // 设置请求头 如果设置请求头的话
+        const isGetSend = type === 'get' ? null : JSON.stringify(data)
         if (config.contentType) {
             xhr.setRequestHeader("Content-Type", config.contentType);
             xhr.send(urlData);
         } else {
-            xhr.send(data instanceof FormData ? data : (type === 'get' ? null : JSON.stringify(data)))
+            xhr.send(data instanceof FormData ? data : isGetSend)
         }
         xhr.timeout = (timeOut || 6) * 1000;
         xhr.ontimeout = () => {
